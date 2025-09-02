@@ -6,19 +6,19 @@ ARG TARGETPLATFORM
 # ==============================================================================
 # STAGE 1: System Dependencies & Base Setup
 # ==============================================================================
-FROM n8nio/base:${NODE_VERSION} AS system-deps
+FROM registry.cn-hangzhou.aliyuncs.com/n8n-mirror/base:${NODE_VERSION} AS system-deps
 
 # ==============================================================================
 # STAGE 2: Application Artifact Processor
 # ==============================================================================
-FROM alpine:3.22.0 AS app-artifact-processor
+FROM registry.cn-hangzhou.aliyuncs.com/library/alpine:3.22.0 AS app-artifact-processor
 
 COPY ./compiled /app/
 
 # ==============================================================================
 # STAGE 3: Task Runner Launcher
 # ==============================================================================
-FROM alpine:3.22.0 AS launcher-downloader
+FROM registry.cn-hangzhou.aliyuncs.com/library/alpine:3.22.0 AS launcher-downloader
 ARG TARGETPLATFORM
 ARG LAUNCHER_VERSION
 
